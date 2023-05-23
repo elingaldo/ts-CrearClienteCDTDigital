@@ -1,0 +1,303 @@
+openapi: 3.0.1
+info:
+  description: Servicio de tarea ClienteCdtDigitalTS.
+  version: 0.0.1
+  title: ClienteCDTDigitalTS
+  contact:
+    name: MiBanco
+    url: https://www.mibanco.com.co/
+    email: api@mibanco.com.co
+  license:
+    name: GNU GPLv3
+    url: ‘https://www.gnu.org/licenses/gpl-3.0.html’
+tags:
+  - name: Crear cliente cdt digital
+    description: Crear cliente cdt digital
+
+#----------------------------
+#Endpoints de Tarea
+#----------------------------
+paths:
+  /v1/ts/clienteCDT/{requestType}:
+    post:
+      tags:
+        - Crear cliente cdt digital
+      operationId: crearClienteCdtDigital
+      requestBody:
+        description: Crear cliente cdt digital
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClienteCDTDigitalType"
+      responses:
+        "200":
+          description: Cliente cdt digital creado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra el cliente."
+#---------------------------------------------
+#Se declaran los Modelos/Schemas del servicio
+#---------------------------------------------
+components:
+  schemas:
+    ClienteCDTDigitalType:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        tipoTelefonoPrincipal:
+          type: string
+        telefonoPrincipal:
+          type: integer
+        tipoCorreoElectronico:
+          type: string
+        genero:
+          $ref: "#/components/schemas/GeneroEnum"
+        fechaNacimientoDia:
+          type: integer
+        fechaNacimientoMes:
+          type: integer
+        fechaNacimientoAno:
+          type: integer
+        lugarNacimientoPais:
+          type: string
+        lugarNacimientoDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        lugarNacimientoCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        nacionalidad:
+          type: string
+        nivelConsulta:
+          type: integer
+        fechaExpedicionDocumentoDia:
+          type: integer
+        fechaExpedicionDocumentoMes:
+          type: integer
+        fechaExpedicionDocumentoAno:
+          type: integer
+        expedicionDocumentoPais:
+          type: string
+        expedicionDocumentoDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        expedicionDocumentoCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        paisResidencia:
+          type: string
+        subActividadEconomica:
+          type: string
+        ocupacion:
+          type: string
+        actividadEconomicaCIIU:
+          $ref: "#/components/schemas/TipoActividadCIIUEnum"
+        sectorEconomico:
+          $ref: "#/components/schemas/SectorEconomicoEnum"
+        registroBiometria:
+          type: boolean
+        causalNoBiometria:
+          type: integer
+        direccionPersonal:
+          type: string
+        direccionPersonalPais:
+          type: string
+        direccionPersonalDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        direccionPersonalCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        barrioDireccionPersonal:
+          type: string
+        usoDireccionPersonal:
+          type: string
+        tipoDireccionPersonal:
+          type: string
+        categoriaDireccionPersonal:
+          type: string
+        envioCorrespondencia:
+          type: string
+        ingresosMensuales:
+          type: number
+          format: float
+        patrimonio:
+          type: number
+          format: float
+        declaracionOrigenFondos:
+          type: string
+        reconocimientoPublicoExtranjero:
+          type: boolean
+        reconocimientoPublicoNacional:
+          type: boolean
+        segmento:
+          type: string
+        nicho:
+          type: string
+        canalContactoPreferido:
+          type: string
+        asesorComercial:
+          type: integer
+        tipoVinculacion:
+          type: string
+        porqueMedioSeEnteroDeNosotros:
+          type: string
+        agenciaVinculacion:
+          type: integer
+        fechaDiligenciamientoFormularioDia:
+          type: integer
+        fechaDiligenciamientoFormularioMes:
+          type: integer
+        fechaDiligenciamientoFormularioAno:
+          type: integer
+        fechaVinculacionDia:
+          type: integer
+        fechaVinculacionMes:
+          type: integer
+        fechaVinculacionAno:
+          type: integer
+        lugarDiligenciamientoFormularioPais:
+          type: string
+        lugarDiligenciamientoFormularioDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        lugarDiligenciamientoFormularioCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        residenteFiscalEnOtroPais:
+          type: boolean
+        identificacionFiscal1:
+          type: integer
+        direccionExtranjero:
+          type: boolean
+        tin1:
+          type: integer
+        residenciaFiscalPais:
+          type: string
+        clasificacionFatca:
+          type: string
+        fechaClasificacionFatca:
+          type: string
+          format: date-time
+        clasificacionCRS:
+          type: string
+        fechaClasificacionCRS:
+          type: string
+          format: date-time
+        autorizacionEnvioCelularCorreo:
+          type: boolean
+        canalEnvioCelularYCorreo:
+          type: string
+        productoSolicitado:
+          type: string
+        clienteBase:
+          $ref: "#/components/schemas/ClienteBaseType"
+        codigoNovedadListas:
+          type: string
+        #customParams:
+        #type: Array
+        #items:
+        #$ref: '#/components/schemas/CustomParamType'
+    ClienteBaseType:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        numeroCliente:
+          type: integer
+        tipoPersona:
+          $ref: "#/components/schemas/TipoPersonaEnum"
+        tipoDocumento:
+          $ref: "#/components/schemas/TipoDocumentoEnum"
+        numeroDocumento:
+          type: integer
+        fechaExpedicionDocumento:
+          type: string
+          format: date-time
+        primerNombre:
+          type: string
+        numeroCelular:
+          type: integer
+        segundoNombre:
+          type: string
+        primerApellido:
+          type: string
+        segundoApellido:
+          type: string
+        correoElectronico:
+          type: string
+    NovedadCDTDigitalType:
+      type: object
+      properties:
+        id:
+          type: String
+        numeroDocumento:
+          type: String
+        codigoNovedad:
+          type: string
+        descripcionNovedad:
+          type: string
+        fechaNovedad:
+          type: string
+          format: date-time
+    crearClienteCDTDigitalOutput:
+      type: object
+      properties:
+        numeroCliente:
+          type: integer
+        novedad:
+          $ref: "#/components/schemas/NovedadCDTDigitalType"
+    CiudadEnum:
+      type: string
+      enum:
+        - BOG BOGOTA
+        - TOL TOLIMA
+    DepartamentoEnum:
+      type: string
+      enum:
+        - CUN CUNDINAMARCA
+        - COY COYAIMA
+    GeneroEnum:
+      type: string
+      enum:
+        - F FEMENINO
+        - M MASCULINO
+    TipoActividadCIIUEnum:
+      type: string
+      enum:
+        - 0010 ASALARIADOS
+        - 0081 SIN ACTIVIDAD ECONOMICA
+        - 0082 PERSONAS NATURALES SUBSIDIADAS POR TERCEROS
+        - 0090 RENTISTAS DE CAPITAL SOLO PARA PERSONAS NATUR
+        - 0111 CULTIVO DE CEREALES (EXCEPTO ARROZ), LEGUMBRE
+        - 0112 CULTIVO DE ARROZ
+        - 0113 CULTIVO DE HORTALIZAS, RAICES Y TUBERCULOS
+        - 0114 CULTIVO DE TABACO
+        - 0115 CULTIVO DE PLANTAS TEXTILES
+        - 0119 OTROS CULTIVOS TRANSITORIOS N.C.P.
+        - 0121 CULTIVO DE FRUTAS TROPICALES Y SUBTROPICALES
+    SectorEconomicoEnum:
+      type: string
+      enum:
+        - BAN BANCARIO
+    TipoPersonaEnum:
+      type: string
+      enum:
+        - 1 JURÍDICA
+        - 2 NATURAL
+    TipoDocumentoEnum:
+      type: string
+      enum:
+        - CC CEDULA DE CIUDADANÍA
+        - TI TARJETA DE IDENTIDAD
+        - CDI CARNE DIPLOMATICO
+        - CE CEDULA DE EXTRANJERÍA
+        - CPA CEDULA PAISES ANDINOS
+        - NIT NUMERO DE IDENTIFICACION TRIBUTARIA
+        - PAS PASAPORTE
+        - RCN REGISTRO CIVIL
+        - RUT REGISTRO UNICO TRIBUTARIO
+        - TE TERCEROS DEL EXTERIOR SIN DOMICILIO
+        - RUMC ROTATIVO UTILIZACIONES MICROCREDITO

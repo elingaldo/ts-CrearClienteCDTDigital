@@ -14,12 +14,12 @@ import java.util.List;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
-@Path("/v1/ts/clienteCDT/{requestType}")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-24T09:21:50.045038100-05:00[America/Bogota]")
+@Path("/v1/ts/clienteCDT")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-24T17:15:24.120701300-05:00[America/Bogota]")
 public interface V1CrearClienteCDTDigital {
 
     @POST
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    List<CrearClienteCDTDigitalOutput> crearClienteCDTDigital (@Valid ClienteCDTDigitalType clienteCDTDigitalType);
+    List<CrearClienteCDTDigitalOutput> crearClienteCDTDigital(@Valid ClienteCDTDigitalType clienteCDTDigitalType);
 }

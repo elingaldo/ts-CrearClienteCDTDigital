@@ -18,7 +18,7 @@ tags:
 #Endpoints de Tarea
 #----------------------------
 paths:
-  /v1/ts/clienteCDT/{requestType}:
+  /v1/ts/clienteCDT:
     post:
       tags:
         - Crear cliente cdt digital

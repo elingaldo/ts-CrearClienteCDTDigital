@@ -22,7 +22,7 @@ paths:
     post:
       tags:
         - Crear cliente cdt digital
-      operationId: crearClienteCdtDigital
+      operationId: crearClienteCDTDigital
       requestBody:
         description: Crear cliente cdt digital
         content:
@@ -35,9 +35,9 @@ paths:
           content:
             application/json:
               schema:
-                type: array
+                type: object
                 items:
-                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+                  $ref: "#/components/schemas/crearClienteCDTDigitalOutput"
         "400":
           description: "Parámetros de entrada no validos."
         "404":

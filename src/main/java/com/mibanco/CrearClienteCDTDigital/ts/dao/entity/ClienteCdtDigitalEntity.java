@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -84,9 +85,12 @@ public class ClienteCdtDigitalEntity {
     private String productoSolicitado;
     private String codigoNovedadListas;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "clienteBaseId")
     private ClienteBaseEntity clienteBase;
 
+    /*@OneToMany(mappedBy = "clienteCDTDigitalEntityList", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ElementCollection
+    private List<ClienteBaseEntity> clienteBase;*/
 
 }

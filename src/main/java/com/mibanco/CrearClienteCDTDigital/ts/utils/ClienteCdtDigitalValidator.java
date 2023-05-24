@@ -1,19 +1,22 @@
-package com.mibanco.CrearClienteCDTDigital.ts.utils;
+ package com.mibanco.CrearClienteCDTDigital.ts.utils;
+
 
 import com.mibanco.CrearClienteCDTDigital.ts.gen.type.ClienteCDTDigitalType;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+
+import jakarta.validation.Validator;
 import jakarta.ws.rs.core.Response;
 
-import javax.xml.validation.Validator;
 
 import static com.mibanco.CrearClienteCDTDigital.ts.constants.Constans.ERROR_VALIDACION;
 
 @ApplicationScoped
-public class CrearClienteCdtDigitalValidator {
+public class ClienteCdtDigitalValidator {
 
     @Inject
     Validator validator;
+
     public Response verificarDatosClienteCdtDigital(ClienteCDTDigitalType clienteCDTDigitalType)
             throws ApplicationException {
 
@@ -22,4 +25,5 @@ public class CrearClienteCdtDigitalValidator {
         }
         return Response.ok().build();
     }
+
 }

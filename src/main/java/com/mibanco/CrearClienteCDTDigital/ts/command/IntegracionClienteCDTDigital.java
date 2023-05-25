@@ -15,8 +15,4 @@ public class IntegracionClienteCDTDigital {
         lista.add(clienteCDTDigitalType);
     }
 
-    public List<ClienteCDTDigitalType> listAll() {
-
-        return lista;
-    }
 }

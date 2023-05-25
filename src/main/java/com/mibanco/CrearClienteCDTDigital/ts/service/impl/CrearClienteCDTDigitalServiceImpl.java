@@ -13,6 +13,9 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.mibanco.CrearClienteCDTDigital.ts.constants.Constans.ERROR_OUTPUT_CLIENTES;
+import static com.mibanco.CrearClienteCDTDigital.ts.constants.Constans.ERROR_SERVICIO;
+
 
 @ApplicationScoped
 public class CrearClienteCDTDigitalServiceImpl implements CrearClienteCDTDigitalService {
@@ -46,8 +49,8 @@ public class CrearClienteCDTDigitalServiceImpl implements CrearClienteCDTDigital
             return response;
         } catch (ApplicationException e) {
 
-            LOG.error( e + " en crearClienteCDTDigitalSvcImpl");
-            throw new ApplicationException( e.getMessage() + " crearClienteCDTDigitalSvcImpl");
+            LOG.error(ERROR_OUTPUT_CLIENTES + e + " en ClienteCDTDigitalSvcImpl");
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage() + " ClienteCdtDigitalSvcImpl");
         }
     }
 }

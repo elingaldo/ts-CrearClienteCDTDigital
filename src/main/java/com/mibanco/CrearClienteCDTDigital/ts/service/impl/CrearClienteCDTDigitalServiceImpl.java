@@ -1,17 +1,20 @@
 package com.mibanco.CrearClienteCDTDigital.ts.service.impl;
 
-import com.mibanco.CrearClienteCDTDigital.ts.dao.contract.CrearClienteCDTDigitalDAO;
-import com.mibanco.CrearClienteCDTDigital.ts.dao.entity.ClienteCdtDigitalEntity;
+import com.mibanco.CrearClienteCDTDigital.ts.command.IntegracionClienteCDTDigital;
 import com.mibanco.CrearClienteCDTDigital.ts.gen.type.ClienteCDTDigitalType;
+import com.mibanco.CrearClienteCDTDigital.ts.gen.type.CrearClienteCDTDigitalOutput;
+import com.mibanco.CrearClienteCDTDigital.ts.gen.type.NovedadCDTDigitalType;
 import com.mibanco.CrearClienteCDTDigital.ts.service.contract.CrearClienteCDTDigitalService;
 import com.mibanco.CrearClienteCDTDigital.ts.utils.ApplicationException;
-import com.mibanco.CrearClienteCDTDigital.ts.utils.CrearClienteCdtDigitalValidator;
-import com.mibanco.CrearClienteCDTDigital.ts.utils.CrearClienteDigitalMapper;
+import com.mibanco.CrearClienteCDTDigital.ts.utils.ClienteCdtDigitalValidator;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static com.mibanco.CrearClienteCDTDigital.ts.constants.Constans.ERROR_OUTPUT_CLIENTES;
+import static com.mibanco.CrearClienteCDTDigital.ts.constants.Constans.ERROR_SERVICIO;
 
 
 @ApplicationScoped
@@ -20,30 +23,34 @@ public class CrearClienteCDTDigitalServiceImpl implements CrearClienteCDTDigital
     private static final Logger LOG = LoggerFactory.getLogger(CrearClienteCDTDigitalServiceImpl.class);
 
     @Inject
-    CrearClienteCDTDigitalDAO crearClienteCdtDigitalDAO;
+    IntegracionClienteCDTDigital integracionClienteCDTDigital;
 
     @Inject
-    CrearClienteDigitalMapper crearClienteMapper;
-
-    @Inject
-    CrearClienteCdtDigitalValidator crearClienteCdtDigitalValidator;
+    ClienteCdtDigitalValidator clienteCdtDigitalValidator;
 
     @Transactional
     @Override
-    public ClienteCDTDigitalType crearClienteCdtDigital(ClienteCdtDigitalEntity clienteCDTDigitalEntity) {
+    public CrearClienteCDTDigitalOutput crearClienteCDTDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia creación de datos crearClienteCDTDigitalSvcImpl");
         try {
-            ClienteCDTDigitalType clienteCDTDigitalType = crearClienteMapper.clienteEntityToType(clienteCDTDigitalEntity);
-            crearClienteCdtDigitalValidator.verificarDatosClienteCdtDigital(clienteCDTDigitalType);
 
-            crearClienteCdtDigitalDAO.persist(clienteCDTDigitalEntity);
+            clienteCdtDigitalValidator.verificarDatosClienteCdtDigital(clienteCDTDigitalType);
+
+            integracionClienteCDTDigital.crearClienteCDTDigital(clienteCDTDigitalType);
 
             LOG.info("Termina creación de datos crearClienteCDTDigitalSvcImpl");
-            return clienteCDTDigitalType;
+            NovedadCDTDigitalType novedad = new NovedadCDTDigitalType();
+            novedad.setId(null);
+            novedad.setNumeroDocumento(clienteCDTDigitalType.getClienteBase().getNumeroDocumento().toString());
+
+            CrearClienteCDTDigitalOutput response = new CrearClienteCDTDigitalOutput();
+            response.setNumeroCliente(clienteCDTDigitalType.getClienteBase().getNumeroCliente());
+            response.setNovedad(novedad);
+            return response;
         } catch (ApplicationException e) {
 
-            LOG.error( e + " en crearClienteCDTDigitalSvcImpl");
-            throw new ApplicationException( e.getMessage() + " crearClienteCDTDigitalSvcImpl");
+            LOG.error(ERROR_OUTPUT_CLIENTES + e + " en ClienteCDTDigitalSvcImpl");
+            throw new ApplicationException(ERROR_SERVICIO + e.getMessage() + " ClienteCdtDigitalSvcImpl");
         }
     }
 }

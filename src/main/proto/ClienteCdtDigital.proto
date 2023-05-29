@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "com.mibanco.clienteCdtDigital.ts";
+option java_outer_classname = "CrearClienteCdtDigitalGrpc";
+
+package CrearClienteCdtDigitalGrpc;
+
+
+enum CiudadEnum{
+  BOG_BOGOTA = 0;
+  TOL_TOLIMA = 1;
+}
+enum DepartamentoEnum{
+  COY_COYAIMA = 0;
+  CUN_CUNDINAMARCA = 1;
+}
+enum SectorEconomicoEnum{
+  BAN_BANCARIO = 0;
+}
+
+enum GeneroEnum{
+  F_FEMENINO = 0;
+  M_MASCULINO = 1;
+}
+
+enum TipoPersonaEnum{
+  _1_JUR_DICA = 0;
+  _2_NATURAL = 1;
+}
+
+enum TipoDocumentoEnum{
+  CC_CEDULA_DE_CIUDADAN_A = 0;
+  TI_TARJETA_DE_IDENTIDAD = 1;
+  CDI_CARNE_DIPLOMATICO = 2;
+  CE_CEDULA_DE_EXTRANJER_A = 3;
+  CPA_CEDULA_PAISES_ANDINOS = 4;
+  NIT_NUMERO_DE_IDENTIFICACION_TRIBUTARIA = 5;
+  PAS_PASAPORTE = 6;
+  RCN_REGISTRO_CIVIL = 7;
+  RUT_REGISTRO_UNICO_TRIBUTARIO = 8;
+  TE_TERCEROS_DEL_EXTERIOR_SIN_DOMICILIO = 9;
+  RUMC_ROTATIVO_UTILIZACIONES_MICROCREDITO = 10;
+}
+enum TipoActividadCIIUEnum{
+  _0010_ASALARIADOS = 0 ;
+  _0081_SIN_ACTIVIDAD_ECONOMICA = 1;
+  _0082_PERSONAS_NATURALES_SUBSIDIADAS_POR_TERCEROS = 2;
+  _0090_RENTISTAS_DE_CAPITAL_SOLO_PARA_PERSONAS_NATUR = 3;
+  _0111_CULTIVO_DE_CEREALES_EXCEPTO_ARROZ_LEGUMBRE = 4;
+  _0112_CULTIVO_DE_ARROZ = 5;
+  _0113_CULTIVO_DE_HORTALIZAS_RAICES_Y_TUBERCULOS = 6 ;
+  _0114_CULTIVO_DE_TABACO = 7;
+  _0115_CULTIVO_DE_PLANTAS_TEXTILES = 8;
+  _0119_OTROS_CULTIVOS_TRANSITORIOS_N_C_P_ = 9;
+  _0121_CULTIVO_DE_FRUTAS_TROPICALES_Y_SUBTROPICALES = 10 ;
+}
+
+message ClienteBase {
+  int32 numeroCliente = 1;
+  TipoPersonaEnum tipoPersona = 2;
+  TipoDocumentoEnum tipoDocumento = 3;
+  int32 numeroDocumento = 4;
+  string fechaExpedicionDocumento = 5;
+  string primerNombre = 6;
+  int32 numeroCelular = 7;
+  string segundoNombre = 8;
+  string primerApellido = 9;
+  string segundoApellido = 10;
+  string correoElectronico = 11;
+}
+
+message ClienteCdtDigitalGrpc {
+  ClienteBase clienteBase = 1;
+  string tipoTelefonoPrincipal = 2;
+  int32 telefonoPrincipal = 3;
+  string tipoCorreoElectronico = 4;
+  GeneroEnum genero = 5;
+  int32 fechaNacimientoDia = 6;
+  int32 fechaNacimientoMes = 7;
+  int32 fechaNacimientoAno = 8;
+  string lugarNacimientoPais = 9;
+  DepartamentoEnum lugarNacimientoDpto = 10;
+  CiudadEnum lugarNacimientoCiudad = 11;
+  string nacionalidad = 12;
+  int32 nivelConsulta = 13;
+  int32 fechaExpedicionDocumentoDia = 14;
+  int32 fechaExpedicionDocumentoMes = 15;
+  int32 fechaExpedicionDocumentoAno = 16;
+  string expedicionDocumentoPais = 17;
+  DepartamentoEnum expedicionDocumentoDpto = 18;
+  CiudadEnum expedicionDocumentoCiudad = 19;
+  string paisResidencia = 20;
+  string subActividadEconomica = 21;
+  string ocupacion = 22;
+  TipoActividadCIIUEnum actividadEconomicaCIIU = 23;
+  SectorEconomicoEnum sectorEconomico = 24;
+  bool registroBiometria = 25;
+  int32 causalNoBiometria = 26;
+  string direccionPersonal = 27;
+  string direccionPersonalPais = 28;
+  DepartamentoEnum direccionPersonalDpto = 29;
+  CiudadEnum direccionPersonalCiudad = 30;
+  string barrioDireccionPersonal = 31;
+  string usoDireccionPersonal = 32;
+  string tipoDireccionPersonal = 33;
+  string categoriaDireccionPersonal = 34;
+  string envioCorrespondencia = 35;
+  int32 ingresosMensuales = 36;
+  int32 patrimonio = 37;
+  string declaracionOrigenFondos = 38;
+  bool reconocimientoPublicoExtranjero = 39;
+  bool reconocimientoPublicoNacional = 40;
+  string segmento = 41;
+  string nicho = 42;
+  string canalContactoPreferido = 43;
+  int32 asesorComercial = 44;
+  string tipoVinculacion = 45;
+  string porqueMedioSeEnteroDeNosotros = 46;
+  int32 agenciaVinculacion = 47;
+  int32 fechaDiligenciamientoFormularioDia = 48;
+  int32 fechaDiligenciamientoFormularioMes = 49;
+  int32 fechaDiligenciamientoFormularioAno = 50;
+  int32 fechaVinculacionDia = 51;
+  int32 fechaVinculacionMes = 52;
+  int32 fechaVinculacionAno = 53;
+  string lugarDiligenciamientoFormularioPais = 54;
+  DepartamentoEnum lugarDiligenciamientoFormularioDpto = 55;
+  CiudadEnum lugarDiligenciamientoFormularioCiudad = 56;
+  bool residenteFiscalEnOtroPais = 57;
+  int32 identificacionFiscal1 = 58;
+  bool direccionExtranjero = 59;
+  int32 tin1 = 60;
+  string residenciaFiscalPais = 61;
+  string clasificacionFatca = 62;
+  string fechaClasificacionFatca = 63;
+  string clasificacionCRS = 64;
+  string fechaClasificacionCRS = 65;
+  bool autorizacionEnvioCelularCorreo = 66;
+  string canalEnvioCelularYCorreo = 67;
+  string productoSolicitado = 68;
+  string codigoNovedadListas = 69;
+}
+message Creado{
+  ClienteCdtDigitalGrpc ClienteCdtDigital = 1;
+}
+service ClienteCDTServiceGrpc {
+  rpc crearClienteCDT(ClienteCdtDigitalGrpc) returns (Creado);
+}

@@ -19,9 +19,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ClienteCDTDigitalType")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-23T12:21:28.724247800-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-29T10:30:54.950835-05:00[America/Bogota]")
 public class ClienteCDTDigitalType   {
-  private @Valid Long id;
   private @Valid String tipoTelefonoPrincipal;
   private @Valid Integer telefonoPrincipal;
   private @Valid String tipoCorreoElectronico;
@@ -91,24 +90,6 @@ public class ClienteCDTDigitalType   {
   private @Valid String productoSolicitado;
   private @Valid ClienteBaseType clienteBase;
   private @Valid String codigoNovedadListas;
-
-  /**
-   **/
-  public ClienteCDTDigitalType id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  
-  @JsonProperty("id")
-  public Long getId() {
-    return id;
-  }
-
-  @JsonProperty("id")
-  public void setId(Long id) {
-    this.id = id;
-  }
 
   /**
    **/
@@ -1362,8 +1343,7 @@ public class ClienteCDTDigitalType   {
       return false;
     }
     ClienteCDTDigitalType clienteCDTDigitalType = (ClienteCDTDigitalType) o;
-    return Objects.equals(this.id, clienteCDTDigitalType.id) &&
-        Objects.equals(this.tipoTelefonoPrincipal, clienteCDTDigitalType.tipoTelefonoPrincipal) &&
+    return Objects.equals(this.tipoTelefonoPrincipal, clienteCDTDigitalType.tipoTelefonoPrincipal) &&
         Objects.equals(this.telefonoPrincipal, clienteCDTDigitalType.telefonoPrincipal) &&
         Objects.equals(this.tipoCorreoElectronico, clienteCDTDigitalType.tipoCorreoElectronico) &&
         Objects.equals(this.genero, clienteCDTDigitalType.genero) &&
@@ -1436,7 +1416,7 @@ public class ClienteCDTDigitalType   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tipoTelefonoPrincipal, telefonoPrincipal, tipoCorreoElectronico, genero, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAno, lugarNacimientoPais, lugarNacimientoDpto, lugarNacimientoCiudad, nacionalidad, nivelConsulta, fechaExpedicionDocumentoDia, fechaExpedicionDocumentoMes, fechaExpedicionDocumentoAno, expedicionDocumentoPais, expedicionDocumentoDpto, expedicionDocumentoCiudad, paisResidencia, subActividadEconomica, ocupacion, actividadEconomicaCIIU, sectorEconomico, registroBiometria, causalNoBiometria, direccionPersonal, direccionPersonalPais, direccionPersonalDpto, direccionPersonalCiudad, barrioDireccionPersonal, usoDireccionPersonal, tipoDireccionPersonal, categoriaDireccionPersonal, envioCorrespondencia, ingresosMensuales, patrimonio, declaracionOrigenFondos, reconocimientoPublicoExtranjero, reconocimientoPublicoNacional, segmento, nicho, canalContactoPreferido, asesorComercial, tipoVinculacion, porqueMedioSeEnteroDeNosotros, agenciaVinculacion, fechaDiligenciamientoFormularioDia, fechaDiligenciamientoFormularioMes, fechaDiligenciamientoFormularioAno, fechaVinculacionDia, fechaVinculacionMes, fechaVinculacionAno, lugarDiligenciamientoFormularioPais, lugarDiligenciamientoFormularioDpto, lugarDiligenciamientoFormularioCiudad, residenteFiscalEnOtroPais, identificacionFiscal1, direccionExtranjero, tin1, residenciaFiscalPais, clasificacionFatca, fechaClasificacionFatca, clasificacionCRS, fechaClasificacionCRS, autorizacionEnvioCelularCorreo, canalEnvioCelularYCorreo, productoSolicitado, clienteBase, codigoNovedadListas);
+    return Objects.hash(tipoTelefonoPrincipal, telefonoPrincipal, tipoCorreoElectronico, genero, fechaNacimientoDia, fechaNacimientoMes, fechaNacimientoAno, lugarNacimientoPais, lugarNacimientoDpto, lugarNacimientoCiudad, nacionalidad, nivelConsulta, fechaExpedicionDocumentoDia, fechaExpedicionDocumentoMes, fechaExpedicionDocumentoAno, expedicionDocumentoPais, expedicionDocumentoDpto, expedicionDocumentoCiudad, paisResidencia, subActividadEconomica, ocupacion, actividadEconomicaCIIU, sectorEconomico, registroBiometria, causalNoBiometria, direccionPersonal, direccionPersonalPais, direccionPersonalDpto, direccionPersonalCiudad, barrioDireccionPersonal, usoDireccionPersonal, tipoDireccionPersonal, categoriaDireccionPersonal, envioCorrespondencia, ingresosMensuales, patrimonio, declaracionOrigenFondos, reconocimientoPublicoExtranjero, reconocimientoPublicoNacional, segmento, nicho, canalContactoPreferido, asesorComercial, tipoVinculacion, porqueMedioSeEnteroDeNosotros, agenciaVinculacion, fechaDiligenciamientoFormularioDia, fechaDiligenciamientoFormularioMes, fechaDiligenciamientoFormularioAno, fechaVinculacionDia, fechaVinculacionMes, fechaVinculacionAno, lugarDiligenciamientoFormularioPais, lugarDiligenciamientoFormularioDpto, lugarDiligenciamientoFormularioCiudad, residenteFiscalEnOtroPais, identificacionFiscal1, direccionExtranjero, tin1, residenciaFiscalPais, clasificacionFatca, fechaClasificacionFatca, clasificacionCRS, fechaClasificacionCRS, autorizacionEnvioCelularCorreo, canalEnvioCelularYCorreo, productoSolicitado, clienteBase, codigoNovedadListas);
   }
 
   @Override
@@ -1444,7 +1424,6 @@ public class ClienteCDTDigitalType   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ClienteCDTDigitalType {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    tipoTelefonoPrincipal: ").append(toIndentedString(tipoTelefonoPrincipal)).append("\n");
     sb.append("    telefonoPrincipal: ").append(toIndentedString(telefonoPrincipal)).append("\n");
     sb.append("    tipoCorreoElectronico: ").append(toIndentedString(tipoCorreoElectronico)).append("\n");

@@ -39,12 +39,12 @@ public class CrearClienteCDTDigitalControllerTest {
 
     @Test
     public void testCrearCliente() throws IOException {
-        // Configurar el mock del ObjectMapper
+        // Configurar el mock del ObjectMapper -X
         when(mockObjectMapper.readValue(any(byte[].class), any(Class.class))).thenReturn(new CrearClienteCDTDigitalOutput());
 
         // Preparación de datos
         String jsonString = new String(Files.readAllBytes(Paths.get("src/main/resources/ts-CrearClienteCDTDigital-api.json")), StandardCharsets.UTF_8);
-        ClienteCDTDigitalType clienteType = objectMapper.readValue(jsonString, ClienteCDTDigitalType.class);
+        CrearClienteCDTDigitalOutput clienteType = objectMapper.readValue(jsonString, CrearClienteCDTDigitalOutput.class);
 
         // Envío de solicitud
         given()
